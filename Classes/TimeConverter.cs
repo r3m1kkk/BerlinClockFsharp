@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BerlinClock.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ namespace BerlinClock
 {
     public class TimeConverter : ITimeConverter
     {
-        private DateTime _currentTime = default(DateTime);
+        private Time _currentTime = new Time(0,0,0);
 
         public string convertTime(string aTime)
         {
@@ -20,10 +21,32 @@ namespace BerlinClock
 
         private void ParseDate(string aTime)
         {
-            if (!DateTime.TryParse(aTime, out _currentTime))
+            string[] timeValues = aTime.Split(':');
+
+            if(timeValues == null || timeValues.Length != 3)
             {
-                throw new ArgumentException("Unrecognized hour");
+                throw new ArgumentException("Unrecognized hour. Expected format: H:mm:ss");
             }
+
+            int hours;
+            if(!int.TryParse(timeValues[0], out hours))
+            {
+                throw new ArgumentException("Unrecognized hour. Hours value is incorrect");
+            }
+
+            int minutes;
+            if (!int.TryParse(timeValues[1], out minutes))
+            {
+                throw new ArgumentException("Unrecognized hour. Minutes value is incorrect");
+            }
+
+            int seconds;
+            if (!int.TryParse(timeValues[2], out seconds))
+            {
+                throw new ArgumentException("Unrecognized hour. Seconds value is incorrect");
+            }
+
+            _currentTime = new Time(hours, minutes, seconds);
         }
 
         private string DrawClock()
