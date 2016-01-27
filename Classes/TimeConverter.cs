@@ -51,6 +51,18 @@ namespace BerlinClock
             return DrawHoursRow(lightenedHours);
         }
 
+        private string DrawHoursRow(int lightenedHours)
+        {
+            return DrawRow(lightenedHours, 'R');
+        }
+
+        private string DrawRow(int lightenedCount, char lightenedColour)
+        {
+            int notLightenedHours = 4 - lightenedCount;
+
+            return String.Format("{0}{1}", new String(lightenedColour, lightenedCount), new String('O', notLightenedHours));
+        }
+
         private string DrawHoursSecondLine()
         {
             var lightenedHours = _currentTime.Hour % 5;
@@ -79,18 +91,9 @@ namespace BerlinClock
             return DrawMinutesRow(yellowMinutes);
         }
 
-        private string DrawHoursRow(int lightenedHours)
+        private string DrawMinutesRow(int lightenedMinutes)
         {
-            int notLightenedHours = 4 - lightenedHours;
-
-            return String.Format("{0}{1}", new String('R', lightenedHours), new String('O', notLightenedHours));
-        }
-
-        private string DrawMinutesRow(int lightenedHours)
-        {
-            int notLightenedHours = 4 - lightenedHours;
-
-            return String.Format("{0}{1}", new String('Y', lightenedHours), new String('O', notLightenedHours));
+            return DrawRow(lightenedMinutes, 'Y');
         }
     }
 }
