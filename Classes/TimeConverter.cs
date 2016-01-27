@@ -34,7 +34,7 @@ namespace BerlinClock
             clockRows.AppendLine(DrawHoursFirstLine());
             clockRows.AppendLine(DrawHoursSecondLine());
             clockRows.AppendLine(DrawMinutesFirstLine());
-            clockRows.Append(@"YYOO");
+            clockRows.Append(DrawMinutesSecondLine());
 
             return clockRows.ToString();
         }
@@ -72,11 +72,25 @@ namespace BerlinClock
             return String.Format("{0}{1}", lightenedMinutes, new String('O', orangeMinutes));
         }
 
+        private string DrawMinutesSecondLine()
+        {
+            int yellowMinutes = _currentTime.Minute % 5;
+
+            return DrawMinutesRow(yellowMinutes);
+        }
+
         private string DrawHoursRow(int lightenedHours)
         {
             int notLightenedHours = 4 - lightenedHours;
 
             return String.Format("{0}{1}", new String('R', lightenedHours), new String('O', notLightenedHours));
+        }
+
+        private string DrawMinutesRow(int lightenedHours)
+        {
+            int notLightenedHours = 4 - lightenedHours;
+
+            return String.Format("{0}{1}", new String('Y', lightenedHours), new String('O', notLightenedHours));
         }
     }
 }
