@@ -122,5 +122,66 @@ namespace BerlinClock.UnitTests
             var parsedTime = Time.Parse(time);
         }
 
+        [TestMethod]
+        public void is_0_0_0_properly_parsed()
+        {
+            //arrange
+            var time = "0:0:0";
+
+            //act
+            var parsedTime = Time.Parse(time);
+
+            //assert
+            Assert.AreEqual(0, parsedTime.Hour);
+            Assert.AreEqual(0, parsedTime.Minute);
+            Assert.AreEqual(0, parsedTime.Second);
+        }
+
+        [TestMethod]
+        public void is_0_01_0_properly_parsed()
+        {
+            //arrange
+            var time = "0:01:0";
+
+            //act
+            var parsedTime = Time.Parse(time);
+
+            //assert
+            Assert.AreEqual(0, parsedTime.Hour);
+            Assert.AreEqual(1, parsedTime.Minute);
+            Assert.AreEqual(0, parsedTime.Second);
+        }
+
+        [TestMethod]
+        public void is_14_01_59_properly_parsed()
+        {
+            //arrange
+            var time = "14:01:59";
+
+            //act
+            var parsedTime = Time.Parse(time);
+
+            //assert
+            Assert.AreEqual(14, parsedTime.Hour);
+            Assert.AreEqual(1, parsedTime.Minute);
+            Assert.AreEqual(59, parsedTime.Second);
+        }
+
+        [TestMethod]
+        public void is_23_59_59_properly_parsed()
+        {
+            //arrange
+            var time = "23:59:59";
+
+            //act
+            var parsedTime = Time.Parse(time);
+
+            //assert
+            Assert.AreEqual(23, parsedTime.Hour);
+            Assert.AreEqual(59, parsedTime.Minute);
+            Assert.AreEqual(59, parsedTime.Second);
+        }
+
+
     }
 }
