@@ -11,9 +11,19 @@ namespace BerlinClock
 
         public string convertTime(string aTime)
         {
+            ParseDate(aTime);
+
             string output = DrawClock();
 
             return output;
+        }
+
+        private void ParseDate(string aTime)
+        {
+            if (!DateTime.TryParse(aTime, out _currentTime))
+            {
+                throw new ArgumentException("Unrecognized hour");
+            }
         }
 
         private string DrawClock()
