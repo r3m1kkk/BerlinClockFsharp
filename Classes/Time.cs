@@ -43,7 +43,7 @@ namespace BerlinClock.Classes
             }
 
             uint seconds;
-            if (!uint.TryParse(timeValues[2], out seconds))
+            if (!uint.TryParse(timeValues[2], out seconds) || seconds > 59)
             {
                 throw new ArgumentException("Unrecognized hour. Seconds value is incorrect");
             }

@@ -78,5 +78,38 @@ namespace BerlinClock.UnitTests
             var parsedTime = Time.Parse(time);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void is_exception_thrown_when_second_is_negative()
+        {
+            //arrange
+            var time = "10:20:-20";
+
+            //act
+            var parsedTime = Time.Parse(time);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void is_exception_thrown_when_second_is_not_integer()
+        {
+            //arrange
+            var time = "10:20:z";
+
+            //act
+            var parsedTime = Time.Parse(time);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void is_exception_thrown_when_second_is_greater_than_59()
+        {
+            //arrange
+            var time = "10:20:71";
+
+            //act
+            var parsedTime = Time.Parse(time);
+        }
+
     }
 }
