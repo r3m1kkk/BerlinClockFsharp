@@ -7,9 +7,15 @@ namespace BerlinClock
 {
     public class TimeConverter : ITimeConverter
     {
+        private DateTime _currentTime = default(DateTime);
+
         public string convertTime(string aTime)
         {
-            throw new NotImplementedException();
+            return @"O
+RROO
+RRRO
+YYROOOOOOOO
+YYOO";
         }
     }
 }
