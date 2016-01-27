@@ -20,5 +20,43 @@ namespace BerlinClock.Classes
             Minute = minutes;
             Second = seconds;
         }
+
+        public static Time Parse(string aTime)
+        {
+            string[] timeValues = aTime.Split(':');
+
+            if (timeValues == null || timeValues.Length != 3)
+            {
+                throw new ArgumentException("Unrecognized hour. Expected format: H:mm:ss");
+            }
+
+            int hours;
+            if (!int.TryParse(timeValues[0], out hours))
+            {
+                throw new ArgumentException("Unrecognized hour. Hours value is incorrect");
+            }
+
+            int minutes;
+            if (!int.TryParse(timeValues[1], out minutes))
+            {
+                throw new ArgumentException("Unrecognized hour. Minutes value is incorrect");
+            }
+
+            int seconds;
+            if (!int.TryParse(timeValues[2], out seconds))
+            {
+                throw new ArgumentException("Unrecognized hour. Seconds value is incorrect");
+            }
+
+            return new Time(hours, minutes, seconds);
+        }
+
+        private static void ParseTimePart(string valueToParse, out int valueToSet)
+        {
+            if (!int.TryParse(valueToParse, out valueToSet))
+            {
+                throw new ArgumentException("Unrecognized hour. Hours value is incorrect");
+            }
+        }
     }
 }
