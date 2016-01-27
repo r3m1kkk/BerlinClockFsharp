@@ -31,8 +31,8 @@ namespace BerlinClock
             var clockRows = new StringBuilder();
 
             clockRows.AppendLine(DrawSeconds());
-            clockRows.Append(@"RROO
-RRRO
+            clockRows.AppendLine(DrawHoursFirstLine());
+            clockRows.Append(@"RRRO
 YYROOOOOOOO
 YYOO");
 
@@ -42,6 +42,14 @@ YYOO");
         private string DrawSeconds()
         {
             return _currentTime.Second % 2 == 0 ? "Y" : "O";
+        }
+
+        private string DrawHoursFirstLine()
+        {
+            var lightenedHours = (int)Math.Floor((decimal)(_currentTime.Hour / 5));
+            int notLightenedHours = 4 - lightenedHours;
+            
+            return String.Format("{0}{1}", new String('R', lightenedHours), new String('O', notLightenedHours));
         }
     }
 }
