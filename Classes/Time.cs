@@ -31,13 +31,13 @@ namespace BerlinClock.Classes
             }
 
             uint hours;
-            if (!uint.TryParse(timeValues[0], out hours))
+            if (!uint.TryParse(timeValues[0], out hours) || hours > 24)
             {
                 throw new ArgumentException("Unrecognized hour. Hours value is incorrect");
             }
 
             uint minutes;
-            if (!uint.TryParse(timeValues[1], out minutes))
+            if (!uint.TryParse(timeValues[1], out minutes) || minutes > 59)
             {
                 throw new ArgumentException("Unrecognized hour. Minutes value is incorrect");
             }
