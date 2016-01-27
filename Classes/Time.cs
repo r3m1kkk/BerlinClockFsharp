@@ -30,25 +30,25 @@ namespace BerlinClock.Classes
                 throw new ArgumentException("Unrecognized hour. Expected format: H:mm:ss");
             }
 
-            int hours;
-            if (!int.TryParse(timeValues[0], out hours))
+            uint hours;
+            if (!uint.TryParse(timeValues[0], out hours))
             {
                 throw new ArgumentException("Unrecognized hour. Hours value is incorrect");
             }
 
-            int minutes;
-            if (!int.TryParse(timeValues[1], out minutes))
+            uint minutes;
+            if (!uint.TryParse(timeValues[1], out minutes))
             {
                 throw new ArgumentException("Unrecognized hour. Minutes value is incorrect");
             }
 
-            int seconds;
-            if (!int.TryParse(timeValues[2], out seconds))
+            uint seconds;
+            if (!uint.TryParse(timeValues[2], out seconds))
             {
                 throw new ArgumentException("Unrecognized hour. Seconds value is incorrect");
             }
 
-            return new Time(hours, minutes, seconds);
+            return new Time((int)hours, (int)minutes, (int)seconds);
         }
 
         private static void ParseTimePart(string valueToParse, out int valueToSet)
