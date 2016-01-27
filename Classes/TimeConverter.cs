@@ -1,7 +1,5 @@
 ﻿using BerlinClock.Classes;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace BerlinClock
@@ -23,51 +21,55 @@ namespace BerlinClock
         {
             var clockRows = new StringBuilder();
 
-            clockRows.AppendLine(DrawSeconds());
-            clockRows.AppendLine(DrawHoursFirstLine());
-            clockRows.AppendLine(DrawHoursSecondLine());
-            clockRows.AppendLine(DrawMinutesFirstLine());
-            clockRows.Append(DrawMinutesSecondLine());
+            bool evenSecond = _currentTime.Second % 2 == 0;
+            clockRows.AppendLine(DrawSeconds(evenSecond));
+
+            int onHour5Lights = (int)Math.Floor((decimal)(_currentTime.Hour / 5));
+            int offHour5Lights = 4 - onHour5Lights;
+            clockRows.AppendLine(DrawHoursFirstLine(onHour5Lights, offHour5Lights));
+
+            int onHour1Lights = _currentTime.Hour % 5;
+            int offHour1Lights = 4 - onHour1Lights;
+            clockRows.AppendLine(DrawHoursSecondLine(onHour1Lights, offHour1Lights));
+
+            int onMinutes5Lights = (int)Math.Floor((decimal)(_currentTime.Minute / 5));
+            int offMinutes5Lights = 11 - onMinutes5Lights;
+            clockRows.AppendLine(DrawMinutesFirstLine(onMinutes5Lights, offMinutes5Lights));
+
+            int onMinutes1Lights = _currentTime.Minute % 5;
+            int offMinutes1Lights = 4 - onMinutes1Lights;
+            clockRows.Append(DrawMinutesSecondLine(onMinutes1Lights, offMinutes1Lights));
 
             return clockRows.ToString();
         }
 
-        private string DrawSeconds()
+        private string DrawSeconds(bool even)
         {
-            return _currentTime.Second % 2 == 0 ? "Y" : "O";
+            return even ? "Y" : "O";
         }
 
-        private string DrawHoursFirstLine()
+        private string DrawHoursFirstLine(int lightenedHours, int notLightenedHours)
         {
-            var lightenedHours = (int)Math.Floor((decimal)(_currentTime.Hour / 5));
-            
-            return DrawHoursRow(lightenedHours);
+            return DrawHoursRow(lightenedHours, notLightenedHours);
         }
 
-        private string DrawHoursRow(int lightenedHours)
+        private string DrawHoursRow(int lightenedHours, int notLightenedHours)
         {
-            return DrawRow(lightenedHours, 'R');
+            return DrawRow(lightenedHours, notLightenedHours, 'R');
         }
 
-        private string DrawRow(int lightenedCount, char lightenedColour)
+        private string DrawRow(int lightenedCount, int notLightenedCount, char lightenedColour)
         {
-            int notLightenedHours = 4 - lightenedCount;
-
-            return String.Format("{0}{1}", new String(lightenedColour, lightenedCount), new String('O', notLightenedHours));
+            return String.Format("{0}{1}", new String(lightenedColour, lightenedCount), new String('O', notLightenedCount));
         }
 
-        private string DrawHoursSecondLine()
+        private string DrawHoursSecondLine(int lightenedHours, int notLightenedHours)
         {
-            var lightenedHours = _currentTime.Hour % 5;
-
-            return DrawHoursRow(lightenedHours);
+            return DrawHoursRow(lightenedHours, notLightenedHours);
         }
 
-        private string DrawMinutesFirstLine()
+        private string DrawMinutesFirstLine(int yellowMinutes, int orangeMinutes)
         {
-            int yellowMinutes = (int)Math.Floor((decimal)(_currentTime.Minute / 5));
-            int orangeMinutes = 11 - yellowMinutes;
-
             var lightenedMinutes = new StringBuilder();
             for (int i = 1; i <= yellowMinutes; i++)
             {
@@ -77,16 +79,14 @@ namespace BerlinClock
             return String.Format("{0}{1}", lightenedMinutes, new String('O', orangeMinutes));
         }
 
-        private string DrawMinutesSecondLine()
+        private string DrawMinutesSecondLine(int yellowMinutes, int notLightenedMinutes)
         {
-            int yellowMinutes = _currentTime.Minute % 5;
-
-            return DrawMinutesRow(yellowMinutes);
+            return DrawMinutesRow(yellowMinutes, notLightenedMinutes);
         }
 
-        private string DrawMinutesRow(int lightenedMinutes)
+        private string DrawMinutesRow(int lightenedMinutes, int notLightenedMinutes)
         {
-            return DrawRow(lightenedMinutes, 'Y');
+            return DrawRow(lightenedMinutes, notLightenedMinutes, 'Y');
         }
     }
 }
