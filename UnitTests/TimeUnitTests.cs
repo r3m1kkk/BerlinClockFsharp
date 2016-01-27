@@ -111,5 +111,16 @@ namespace BerlinClock.UnitTests
             var parsedTime = Time.Parse(time);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void is_exception_thrown_when_total_time_is_greater_than_24_0_0()
+        {
+            //arrange
+            var time = "24:00:01";
+
+            //act
+            var parsedTime = Time.Parse(time);
+        }
+
     }
 }

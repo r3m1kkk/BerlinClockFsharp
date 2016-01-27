@@ -48,15 +48,12 @@ namespace BerlinClock.Classes
                 throw new ArgumentException("Unrecognized hour. Seconds value is incorrect");
             }
 
-            return new Time((int)hours, (int)minutes, (int)seconds);
-        }
-
-        private static void ParseTimePart(string valueToParse, out int valueToSet)
-        {
-            if (!int.TryParse(valueToParse, out valueToSet))
+            if(hours == 24 && (minutes > 0 || seconds > 0))
             {
-                throw new ArgumentException("Unrecognized hour. Hours value is incorrect");
+                throw new ArgumentException("Unrecognized hour");
             }
+
+            return new Time((int)hours, (int)minutes, (int)seconds);
         }
     }
 }
