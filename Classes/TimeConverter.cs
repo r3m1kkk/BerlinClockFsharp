@@ -28,11 +28,20 @@ namespace BerlinClock
 
         private string DrawClock()
         {
-            return @"O
-RROO
+            var clockRows = new StringBuilder();
+
+            clockRows.AppendLine(DrawSeconds());
+            clockRows.Append(@"RROO
 RRRO
 YYROOOOOOOO
-YYOO";
+YYOO");
+
+            return clockRows.ToString();
+        }
+
+        private string DrawSeconds()
+        {
+            return _currentTime.Second % 2 == 0 ? "Y" : "O";
         }
     }
 }
