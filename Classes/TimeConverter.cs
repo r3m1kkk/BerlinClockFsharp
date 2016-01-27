@@ -47,14 +47,19 @@ YYOO");
         private string DrawHoursFirstLine()
         {
             var lightenedHours = (int)Math.Floor((decimal)(_currentTime.Hour / 5));
-            int notLightenedHours = 4 - lightenedHours;
             
-            return String.Format("{0}{1}", new String('R', lightenedHours), new String('O', notLightenedHours));
+            return DrawHoursRow(lightenedHours);
         }
 
         private string DrawHoursSecondLine()
         {
             var lightenedHours = _currentTime.Hour % 5;
+
+            return DrawHoursRow(lightenedHours);
+        }
+
+        private string DrawHoursRow(int lightenedHours)
+        {
             int notLightenedHours = 4 - lightenedHours;
 
             return String.Format("{0}{1}", new String('R', lightenedHours), new String('O', notLightenedHours));
