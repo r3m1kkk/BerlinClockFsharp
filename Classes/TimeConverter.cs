@@ -11,6 +11,13 @@ namespace BerlinClock
 
         public string convertTime(string aTime)
         {
+            string output = DrawClock();
+
+            return output;
+        }
+
+        private string DrawClock()
+        {
             return @"O
 RROO
 RRRO
