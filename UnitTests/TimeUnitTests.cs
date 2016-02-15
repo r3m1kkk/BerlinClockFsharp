@@ -116,6 +116,18 @@ namespace BerlinClock.UnitTests
 
             //act
             var parsedTime = Time.Parse(time);
+            Assert.IsNull(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void is_time_exception_thrown_when_unexpected_format_provided()
+        {
+            //arrange
+            var time = "24:00";
+
+            //act
+            var parsedTime = Time.Parse(time);
         }
 
         [TestMethod]
