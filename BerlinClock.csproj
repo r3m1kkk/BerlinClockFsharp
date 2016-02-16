@@ -61,7 +61,6 @@
     <Compile Include="Classes\ITimeConverter.cs" />
     <Compile Include="Classes\TimeConverter.cs" />
     <Compile Include="UnitTests\BerlinClockModelTests.cs" />
-    <Compile Include="UnitTests\TimeUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
