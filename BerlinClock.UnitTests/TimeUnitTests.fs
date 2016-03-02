@@ -57,4 +57,4 @@ let ``is time properly parsed``(time, parsedHour, parsedMinute, parsedSecond) =
     //assert
     Assert.That(parsedTime.Hour, Is.EqualTo(parsedHour))
     Assert.That(parsedTime.Minute, Is.EqualTo(parsedMinute))
-    //Assert.That(parsedTime.Second, Is.EqualTo(parsedSecond))
+    Assert.That(parsedTime.Second, Is.EqualTo(parsedSecond))
