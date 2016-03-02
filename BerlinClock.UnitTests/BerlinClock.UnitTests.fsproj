@@ -58,6 +58,7 @@
     <None Include="App.config" />
     <Compile Include="TimeUnitTests.fs" />
     <Content Include="packages.config" />
+    <Compile Include="BerlinClockModelTests.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
