@@ -1,3 +1,10 @@
+# F# learning
+
+This fork is for learning F#. It will evaluate with the time. At this moment I rewrote unit tests using F#. More about this here:
+
+http://blog.koczapski.com/en/2016/03/13/unit-tests-in-fsharp-friendly-names/
+http://blog.koczapski.com/en/2017/01/10/testcase-in-nunit-removing-code-duplication/
+
 # The Berlin Clock
 
 The Berlin Uhr (Clock) is a rather strange way to show the time. On the top of the clock there is a yellow lamp that
