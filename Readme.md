@@ -1,6 +1,6 @@
 # F# learning
 
-This fork is for learning F#. It will evaluate with the time. At this moment I rewrote unit tests using F#. More about this here:
+This fork is for learning F#. At this moment I rewrote unit tests using F#. More about this here:
 
 http://blog.koczapski.com/en/2016/03/13/unit-tests-in-fsharp-friendly-names/
 http://blog.koczapski.com/en/2017/01/10/testcase-in-nunit-removing-code-duplication/
