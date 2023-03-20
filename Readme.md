@@ -5,7 +5,7 @@ This fork is for learning F#. At this moment I rewrote unit tests using F#. More
 http://blog.koczapski.com/en/2016/03/13/unit-tests-in-fsharp-friendly-names/
 http://blog.koczapski.com/en/2017/01/10/testcase-in-nunit-removing-code-duplication/
 
-```
+```fsharp
 [<Test>]
 let ``has berlin clock second light off at 23:59:59``() = 
     //arrange
@@ -18,7 +18,7 @@ let ``has berlin clock second light off at 23:59:59``() =
     Assert.That(clock.OnSecondLight, Is.False);
 ```
 
-http://blog.koczapski.com/wp-content/uploads/2016/03/fsharp_unit_tests.png![image](https://user-images.githubusercontent.com/12199306/226365915-b83faa56-c07b-4583-94f5-63328cc9e0cf.png)
+![Test window](https://user-images.githubusercontent.com/12199306/226365915-b83faa56-c07b-4583-94f5-63328cc9e0cf.png)
 
 
 [BerlinClockModelTests.fs - Unit tests with friendly names in F#](BerlinClockFsharp/BerlinClock.UnitTests/BerlinClockModelTests.fs)
