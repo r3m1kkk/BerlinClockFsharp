@@ -5,6 +5,21 @@ This fork is for learning F#. At this moment I rewrote unit tests using F#. More
 http://blog.koczapski.com/en/2016/03/13/unit-tests-in-fsharp-friendly-names/
 http://blog.koczapski.com/en/2017/01/10/testcase-in-nunit-removing-code-duplication/
 
+```
+[<Test>]
+let ``has berlin clock second light off at 23:59:59``() = 
+    //arrange
+    let time = new Time(23, 59, 59);
+
+    //act
+    let clock = new BerlinClockModel(time);
+
+    //assert
+    Assert.That(clock.OnSecondLight, Is.False);
+```
+
+[BerlinClockModelTests.fs - Unit tests with friendly names in F#](BerlinClockFsharp/BerlinClock.UnitTests/BerlinClockModelTests.fs)
+
 # The Berlin Clock
 
 The Berlin Uhr (Clock) is a rather strange way to show the time. On the top of the clock there is a yellow lamp that
